@@ -1,0 +1,51 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+    "root": true,
+    "extends": ["@flippo-software/biome/base", "@flippo-software/biome/test"],
+    "plugins": ["./node_modules/@flippo-software/biome/src/plugins/no-node-process-import/no-node-process-import.grit"],
+    "linter": {
+        "rules": {
+            "security": {
+                "noSecrets": "off"
+            },
+            "performance": {
+                "noReExportAll": "off",
+                "noBarrelFile": "off"
+            },
+            "style": {
+                "noRestrictedImports": {
+                    "level": "error",
+                    "options": {
+                        "paths": {
+                            "react": "@flippo-ui/core must not depend on React.",
+                            "react-dom": "@flippo-ui/core must not depend on React DOM.",
+                            "@floating-ui/react": "Use @floating-ui/dom, @floating-ui/core or @floating-ui/utils instead.",
+                            "@floating-ui/react-dom": "Use @floating-ui/dom, @floating-ui/core or @floating-ui/utils instead."
+                        },
+                        "patterns": [
+                            {
+                                "group": ["react/*", "react-dom/*", "@floating-ui/react/*", "@floating-ui/react-dom/*"],
+                                "message": "@flippo-ui/core must stay framework-agnostic."
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "overrides": [
+        {
+            "includes": ["src/**/*.test.ts", "test/**/*.ts"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "noNonNullAssertion": "off"
+                    },
+                    "correctness": {
+                        "noNodejsModules": "off"
+                    }
+                }
+            }
+        }
+    ]
+}

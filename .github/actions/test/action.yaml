@@ -1,0 +1,41 @@
+name: Test package
+description: Set up pnpm and Node.js, install dependencies and run the package tests. Run actions/checkout before this action.
+
+inputs:
+    node-version-file:
+        description: File with the Node.js version
+        required: false
+        default: .nvmrc
+    registry-url:
+        description: npm registry to configure (needed only for publishing)
+        required: false
+        default: ''
+    install-command:
+        description: Dependency installation command
+        required: false
+        default: pnpm install --frozen-lockfile
+    test-command:
+        description: Test command
+        required: false
+        default: pnpm test
+
+runs:
+    using: composite
+    steps:
+        - name: Install pnpm
+          uses: pnpm/action-setup@v4
+
+        - name: Install Node.js
+          uses: actions/setup-node@v4
+          with:
+              node-version-file: ${{ inputs.node-version-file }}
+              registry-url: ${{ inputs.registry-url }}
+              cache: pnpm
+
+        - name: Install dependencies
+          shell: bash
+          run: ${{ inputs.install-command }}
+
+        - name: Run tests
+          shell: bash
+          run: ${{ inputs.test-command }}

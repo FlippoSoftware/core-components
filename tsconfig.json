@@ -1,0 +1,24 @@
+{
+    "extends": "@flippo-software/tsconfig",
+    "compilerOptions": {
+        "lib": ["dom", "dom.iterable", "ES2024"],
+        "types": [],
+        "paths": {
+            "~@lib": ["./src/lib"],
+            "~@lib/*": ["./src/lib/*"],
+            "~@components/*": ["./src/components/*"],
+            "~@packages/*": ["./src/packages/*"],
+            "~@attributes/*": ["./src/lib/attributes/*"],
+            "~@dom/*": ["./src/lib/dom/*"],
+            "~@events/*": ["./src/lib/events/*"],
+            "~@patterns/*": ["./src/lib/patterns/*"],
+            "~@popup/*": ["./src/lib/popup/*"],
+            "~@positioning/*": ["./src/lib/positioning/*"],
+            "~@props/*": ["./src/lib/props/*"],
+            "~@store/*": ["./src/lib/store/*"],
+            "~@timers/*": ["./src/lib/timers/*"]
+        }
+    },
+    "include": ["src", "test", "aliases.ts", "tsdown.config.ts", "vitest.config.ts"],
+    "exclude": ["node_modules", "dist"]
+}

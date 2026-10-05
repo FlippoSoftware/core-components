@@ -1,0 +1,107 @@
+{
+    "i18n-ally.localesPaths": ["**/locales"],
+
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    // Without this, VSCode auto-detects indentation from each file's existing content and
+    // silently overrides tabSize/insertSpaces per-file — which is why files with tabs kept
+    // getting more tabs typed into them despite the settings above.
+    "editor.detectIndentation": false,
+
+    // Editor-only: routes IDE language features (hover, completions, inline errors) through
+    // the native Go compiler (tsgo) via the "TypeScript (Native Preview)" extension. Does NOT
+    // change the `typescript` dependency used by builds/tsc/typescript-eslint — TS 7.0 has no
+    // stable programmatic API yet, so typescript-eslint can't run on it until 7.1.
+    "typescript.experimental.useTsgo": true,
+
+    // The default OS-native ("recommended") watcher gets stuck in an infinite re-index loop in
+    // this monorepo — `packages/ui/uikit/headless/components` (a nested Biome project pulling
+    // in the shared `@flippo/biome` plugins via a symlinked `node_modules/@flippo`) keeps
+    // getting reported as changed right after being scanned, pegging the `biome __run_server`
+    // daemon at 300%+ CPU and writing gigabytes of logs. Polling breaks that feedback loop.
+    "biome.lsp.watcher.kind": "polling",
+    "biome.lsp.watcher.pollingInterval": 2000,
+
+    // Global fallback formatter (markdown/yaml/html/graphql/vue/astro/svelte/etc. — anything
+    // Biome doesn't format — still goes through eslint-plugin-format/Prettier via ESLint).
+    "prettier.enable": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+
+    // Biome owns formatting for the languages it covers (see `@flippo-software/biome`'s
+    // `base.config.jsonc`: js/ts/jsx/tsx/css formatter + `javascript`/`json` blocks). SCSS/LESS
+    // are NOT overridden — Biome doesn't parse those — so they still go through
+    // eslint-plugin-format/Prettier (see `cssFormatterDisable` in `@flippo-software/eslint`, which turns
+    // off ESLint's own `format/prettier` copy for `.css` only, leaving `.scss`/`.less` as-is).
+    "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+    "[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+    "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+    "[javascriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+    "[json]": { "editor.defaultFormatter": "biomejs.biome" },
+    "[jsonc]": { "editor.defaultFormatter": "biomejs.biome" },
+    "[css]": { "editor.defaultFormatter": "biomejs.biome" },
+
+    // Auto fix
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.fixAll.biome": "explicit",
+        "source.organizeImports": "never",
+        "source.organizeImports.biome": "explicit"
+    },
+
+    // `style/*` formatting (indent, quotes, comma-dangle, etc.) is now Biome's job on save via
+    // `editor.defaultFormatter` above — excluded here so ESLint doesn't silently reformat the
+    // same files on top of Biome. The 8 rules Biome's formatter can't express (JSX layout
+    // details, listed first so they match before the blanket exclusion) stay ESLint's.
+    "eslint.codeActionsOnSave.rules": [
+        "style/jsx-max-props-per-line",
+        "style/jsx-closing-bracket-location",
+        "style/newline-per-chained-call",
+        "style/object-curly-newline",
+        "style/array-bracket-newline",
+        "style/one-var-declaration-per-line",
+        "style/max-statements-per-line",
+        "style/template-tag-spacing",
+        "!style/*",
+        "*"
+    ],
+
+    // Silent the stylistic rules in you IDE, but still auto fix them
+    "eslint.rules.customizations": [
+        { "rule": "style/*", "severity": "off", "fixable": true },
+        { "rule": "format/*", "severity": "off", "fixable": true },
+        { "rule": "*-indent", "severity": "off", "fixable": true },
+        { "rule": "*-spacing", "severity": "off", "fixable": true },
+        { "rule": "*-spaces", "severity": "off", "fixable": true },
+        { "rule": "*-order", "severity": "off", "fixable": true },
+        { "rule": "*-dangle", "severity": "off", "fixable": true },
+        { "rule": "*-newline", "severity": "off", "fixable": true },
+        { "rule": "*quotes", "severity": "off", "fixable": true },
+        { "rule": "*semi", "severity": "off", "fixable": true }
+    ],
+
+    // Enable eslint for all supported languages
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "html",
+        "markdown",
+        "json",
+        "jsonc",
+        "yaml",
+        "toml",
+        "xml",
+        "gql",
+        "graphql",
+        "astro",
+        "svelte",
+        "css",
+        "less",
+        "scss",
+        "pcss",
+        "postcss"
+    ]
+}

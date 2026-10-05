@@ -1,0 +1,287 @@
+{
+    "name": "@flippo-software/core-components",
+    "type": "module",
+    "version": "0.1.0",
+    "description": "Framework-agnostic state machines for Flippo UI headless components.",
+    "author": "BlackPoretsky (Egor Gorochkin)",
+    "license": "ISC",
+    "keywords": [
+        "headless",
+        "state-machine",
+        "framework-agnostic",
+        "flippo",
+        "a11y"
+    ],
+    "packageManager": "pnpm@11.24.0",
+    "sideEffects": false,
+    "files": [
+        "README.md",
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsdown",
+        "typecheck": "tsc --noEmit",
+        "lint:check": "biome check",
+        "lint:fix": "biome lint --fix && biome format --fix",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.5.15",
+        "@flippo-software/biome": "^1.1.1",
+        "@flippo-software/tsconfig": "^1.0.0",
+        "@vitest/coverage-v8": "^5.0.3",
+        "happy-dom": "^20.14.5",
+        "tsdown": "^0.23.0",
+        "typescript": "^7.0.2",
+        "vitest": "^5.0.3"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FlippoSoftware/core.git"
+    },
+    "homepage": "https://github.com/FlippoSoftware/core#readme",
+    "bugs": {
+        "url": "https://github.com/FlippoSoftware/core/issues"
+    },
+    "dependencies": {
+        "@floating-ui/core": "^1.8.0",
+        "@floating-ui/dom": "^1.8.0",
+        "@floating-ui/utils": "^0.2.12",
+        "tabbable": "^6.5.0"
+    },
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.cts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "./accordion": {
+            "import": "./dist/accordion.js",
+            "require": "./dist/accordion.cjs"
+        },
+        "./attributes": {
+            "import": "./dist/attributes.js",
+            "require": "./dist/attributes.cjs"
+        },
+        "./autocomplete": {
+            "import": "./dist/autocomplete.js",
+            "require": "./dist/autocomplete.cjs"
+        },
+        "./avatar": {
+            "import": "./dist/avatar.js",
+            "require": "./dist/avatar.cjs"
+        },
+        "./button": {
+            "import": "./dist/button.js",
+            "require": "./dist/button.cjs"
+        },
+        "./checkbox": {
+            "import": "./dist/checkbox.js",
+            "require": "./dist/checkbox.cjs"
+        },
+        "./checkbox-card": {
+            "import": "./dist/checkbox-card.js",
+            "require": "./dist/checkbox-card.cjs"
+        },
+        "./checkbox-group": {
+            "import": "./dist/checkbox-group.js",
+            "require": "./dist/checkbox-group.cjs"
+        },
+        "./collapsible": {
+            "import": "./dist/collapsible.js",
+            "require": "./dist/collapsible.cjs"
+        },
+        "./combobox": {
+            "import": "./dist/combobox.js",
+            "require": "./dist/combobox.cjs"
+        },
+        "./composite": {
+            "import": "./dist/composite.js",
+            "require": "./dist/composite.cjs"
+        },
+        "./context-menu": {
+            "import": "./dist/context-menu.js",
+            "require": "./dist/context-menu.cjs"
+        },
+        "./dialog": {
+            "import": "./dist/dialog.js",
+            "require": "./dist/dialog.cjs"
+        },
+        "./dom": {
+            "import": "./dist/dom.js",
+            "require": "./dist/dom.cjs"
+        },
+        "./drawer": {
+            "import": "./dist/drawer.js",
+            "require": "./dist/drawer.cjs"
+        },
+        "./events": {
+            "import": "./dist/events.js",
+            "require": "./dist/events.cjs"
+        },
+        "./field": {
+            "import": "./dist/field.js",
+            "require": "./dist/field.cjs"
+        },
+        "./fieldset": {
+            "import": "./dist/fieldset.js",
+            "require": "./dist/fieldset.cjs"
+        },
+        "./floating": {
+            "import": "./dist/floating.js",
+            "require": "./dist/floating.cjs"
+        },
+        "./form": {
+            "import": "./dist/form.js",
+            "require": "./dist/form.cjs"
+        },
+        "./labelable": {
+            "import": "./dist/labelable.js",
+            "require": "./dist/labelable.cjs"
+        },
+        "./lib": {
+            "import": "./dist/lib.js",
+            "require": "./dist/lib.cjs"
+        },
+        "./list": {
+            "import": "./dist/list.js",
+            "require": "./dist/list.cjs"
+        },
+        "./marquee": {
+            "import": "./dist/marquee.js",
+            "require": "./dist/marquee.cjs"
+        },
+        "./menu": {
+            "import": "./dist/menu.js",
+            "require": "./dist/menu.cjs"
+        },
+        "./menubar": {
+            "import": "./dist/menubar.js",
+            "require": "./dist/menubar.cjs"
+        },
+        "./meter": {
+            "import": "./dist/meter.js",
+            "require": "./dist/meter.cjs"
+        },
+        "./navigation-menu": {
+            "import": "./dist/navigation-menu.js",
+            "require": "./dist/navigation-menu.cjs"
+        },
+        "./number-field": {
+            "import": "./dist/number-field.js",
+            "require": "./dist/number-field.cjs"
+        },
+        "./patterns": {
+            "import": "./dist/patterns.js",
+            "require": "./dist/patterns.cjs"
+        },
+        "./pin-input": {
+            "import": "./dist/pin-input.js",
+            "require": "./dist/pin-input.cjs"
+        },
+        "./popover": {
+            "import": "./dist/popover.js",
+            "require": "./dist/popover.cjs"
+        },
+        "./popup": {
+            "import": "./dist/popup.js",
+            "require": "./dist/popup.cjs"
+        },
+        "./positioning": {
+            "import": "./dist/positioning.js",
+            "require": "./dist/positioning.cjs"
+        },
+        "./progress": {
+            "import": "./dist/progress.js",
+            "require": "./dist/progress.cjs"
+        },
+        "./props": {
+            "import": "./dist/props.js",
+            "require": "./dist/props.cjs"
+        },
+        "./qr-code": {
+            "import": "./dist/qr-code.js",
+            "require": "./dist/qr-code.cjs"
+        },
+        "./radio": {
+            "import": "./dist/radio.js",
+            "require": "./dist/radio.cjs"
+        },
+        "./radio-card": {
+            "import": "./dist/radio-card.js",
+            "require": "./dist/radio-card.cjs"
+        },
+        "./radio-group": {
+            "import": "./dist/radio-group.js",
+            "require": "./dist/radio-group.cjs"
+        },
+        "./scroll-area": {
+            "import": "./dist/scroll-area.js",
+            "require": "./dist/scroll-area.cjs"
+        },
+        "./segmented-control": {
+            "import": "./dist/segmented-control.js",
+            "require": "./dist/segmented-control.cjs"
+        },
+        "./select": {
+            "import": "./dist/select.js",
+            "require": "./dist/select.cjs"
+        },
+        "./separator": {
+            "import": "./dist/separator.js",
+            "require": "./dist/separator.cjs"
+        },
+        "./slider": {
+            "import": "./dist/slider.js",
+            "require": "./dist/slider.cjs"
+        },
+        "./snippet": {
+            "import": "./dist/snippet.js",
+            "require": "./dist/snippet.cjs"
+        },
+        "./store": {
+            "import": "./dist/store.js",
+            "require": "./dist/store.cjs"
+        },
+        "./switch": {
+            "import": "./dist/switch.js",
+            "require": "./dist/switch.cjs"
+        },
+        "./tabs": {
+            "import": "./dist/tabs.js",
+            "require": "./dist/tabs.cjs"
+        },
+        "./timers": {
+            "import": "./dist/timers.js",
+            "require": "./dist/timers.cjs"
+        },
+        "./toast": {
+            "import": "./dist/toast.js",
+            "require": "./dist/toast.cjs"
+        },
+        "./toggle": {
+            "import": "./dist/toggle.js",
+            "require": "./dist/toggle.cjs"
+        },
+        "./toggle-group": {
+            "import": "./dist/toggle-group.js",
+            "require": "./dist/toggle-group.cjs"
+        },
+        "./toolbar": {
+            "import": "./dist/toolbar.js",
+            "require": "./dist/toolbar.cjs"
+        },
+        "./tooltip": {
+            "import": "./dist/tooltip.js",
+            "require": "./dist/tooltip.cjs"
+        },
+        "./package.json": "./package.json"
+    }
+}
